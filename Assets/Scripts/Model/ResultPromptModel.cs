@@ -32,4 +32,9 @@ public class ResultPromptModel
 
         changeEvent?.Invoke();
     }
+
+    public void CopyToClipboard()
+    {
+        UniClipboard.SetText(text);
+    }
 }
