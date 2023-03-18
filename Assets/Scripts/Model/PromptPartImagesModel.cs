@@ -13,19 +13,16 @@ public class PromptPartImagesModel : PromptPartModelBase
     {
         notUsedImages.list = new List<ImageDto>
         {
-            new() { link = "link1" },
-            new() { link = "link2" }
-        };
-
-        usedImages.list = new List<ImageDto>
-        {
-            new() { link = "link3" },
-            new() { link = "link4" }
+            new() { link = "https://cdn.discordapp.com/attachments/1084173661474402305/1086032594530992149/1.jpg" },
+            new() { link = "https://cdn.discordapp.com/attachments/1084173661474402305/1086032595105624186/2.jpg" }
         };
     }
 
     public override string GetPromptPart()
     {
+        if (usedImages.list.Count == 0)
+            return string.Empty;
+
         var stringBuilder = new StringBuilder();
         foreach (var imageDto in usedImages.list)
         {

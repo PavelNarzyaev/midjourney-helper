@@ -2,5 +2,5 @@
 
 public class ImagesListModel
 {
-    public List<ImageDto> list;
+    public List<ImageDto> list = new();
 }
