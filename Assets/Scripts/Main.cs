@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
 
 public class Main : MonoBehaviour
 {
@@ -8,9 +10,17 @@ public class Main : MonoBehaviour
 
     public void Start()
     {
-        var imagesPromptPart = Model.PromptPartImages.GetPromptPart();
-        var textPromptPart = Model.PromptPartText.GetPromptPart();
-        var parametersPromptPart = Model.PromptPartParameters.GetPromptPart();
-        Debug.Log($"/imagine prompt: {imagesPromptPart} {textPromptPart} {parametersPromptPart}");
+        var imagesPromptPart = Model.PromptPartImages;
+        var textPromptPart = Model.PromptPartText;
+        var parametersPromptPart = Model.PromptPartParameters;
+        var promptPartModels = new List<PromptPartModelBase> { imagesPromptPart, textPromptPart, parametersPromptPart };
+        var stringBuilder = new StringBuilder("/imagine prompt:");
+        foreach (var promptPartModel in promptPartModels)
+        {
+            var promptPart = promptPartModel.GetPromptPart();
+            if (!string.IsNullOrEmpty(promptPart))
+                stringBuilder.Append($" {promptPart}");
+        }
+        Debug.Log(stringBuilder.ToString());
     }
 }
