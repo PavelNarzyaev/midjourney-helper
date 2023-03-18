@@ -3,15 +3,8 @@ using UnityEngine;
 
 public class ImagesListComponent : MonoBehaviour
 {
-    private List<ImageDto> _images;
-
-    public void Initialize(List<ImageDto> images)
+    public void Refresh(List<ImageDto> imagesDtos)
     {
-        _images = images;
-    }
 
-    public List<ImageDto> GetImages()
-    {
-        return _images;
     }
 }

@@ -2,12 +2,15 @@
 
 public class Main : MonoBehaviour
 {
-    [SerializeField] private PromptComponentBase images;
-    [SerializeField] private PromptComponentBase text;
-    [SerializeField] private PromptComponentBase parameters;
+    [SerializeField] private PromptImagesComponent images;
+    [SerializeField] private PromptTextComponent text;
+    [SerializeField] private PromptParametersComponent parameters;
 
-    private void Start()
+    public void Start()
     {
-        Debug.Log($"/imagine {images.GetResultString()} {text.GetResultString()} {parameters.GetResultString()}");
+        var imagesPromptPart = Model.PromptPartImages.GetPromptPart();
+        var textPromptPart = Model.PromptPartText.GetPromptPart();
+        var parametersPromptPart = Model.PromptPartParameters.GetPromptPart();
+        Debug.Log($"/imagine prompt: {imagesPromptPart} {textPromptPart} {parametersPromptPart}");
     }
 }

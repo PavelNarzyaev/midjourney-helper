@@ -1,7 +1,5 @@
-﻿public class PromptParametersComponent : PromptComponentBase
+﻿using UnityEngine;
+
+public class PromptParametersComponent : MonoBehaviour
 {
-    public override string GetResultString()
-    {
-        return "parameters";
-    }
 }

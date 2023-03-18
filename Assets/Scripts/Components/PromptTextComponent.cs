@@ -1,7 +1,5 @@
-﻿public class PromptTextComponent : PromptComponentBase
+﻿using UnityEngine;
+
+public class PromptTextComponent : MonoBehaviour
 {
-    public override string GetResultString()
-    {
-        return "text";
-    }
 }
