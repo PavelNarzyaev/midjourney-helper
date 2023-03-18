@@ -1,5 +1,9 @@
-﻿public class PromptPartParametersModel : PromptPartModelBase
+﻿using System;
+
+public class PromptPartParametersModel : PromptPartModelBase
 {
+    public override event Action changeEvent;
+
     public PromptPartParametersModel()
     {
         

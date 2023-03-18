@@ -1,18 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
 
 public class PromptPartTextModel : PromptPartModelBase
 {
     private string _text;
-
-    public PromptPartTextModel()
-    {
-
-    }
+    public override event Action changeEvent;
 
     public void SetText(string value)
     {
-        Debug.Log(value);
         _text = value;
+        changeEvent?.Invoke();
     }
 
     public override string GetPromptPart()

@@ -7,7 +7,7 @@ public class PromptPartImagesModel : PromptPartModelBase
     public ImagesListModel notUsedImages = new();
     public ImagesListModel usedImages = new();
 
-    public event Action changeEvent;
+    public override event Action changeEvent;
 
     public PromptPartImagesModel()
     {
