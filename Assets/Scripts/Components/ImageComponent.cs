@@ -3,15 +3,18 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
 public class ImageComponent : MonoBehaviour
 {
+    [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private Image image;
+    [SerializeField] private RectTransform imageRectTransform;
+
     private string _currentLink;
 
     public void SetLink(string link)
     {
         if (!string.IsNullOrEmpty(_currentLink))
-            GetComponent<Image>().sprite = null;
+            image.sprite = null;
 
         _currentLink = link;
 
@@ -29,7 +32,21 @@ public class ImageComponent : MonoBehaviour
         {
             var texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
             var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(.5f, .5f));
-            GetComponent<Image>().sprite = sprite;
+            image.sprite = sprite;
+
+            var rect = rectTransform.rect;
+            var widthFactor = rect.width / texture.width;
+            var heightFactor = rect.height / texture.height;
+            if (widthFactor > heightFactor)
+            {
+                imageRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rect.height);
+                imageRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, texture.width * heightFactor);
+            }
+            else
+            {
+                imageRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rect.width);
+                imageRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, texture.height * widthFactor);
+            }
         }
     }
 }
