@@ -2,9 +2,9 @@
 
 public class Main : MonoBehaviour
 {
-    [SerializeField] private PromptBlock images;
-    [SerializeField] private PromptBlock text;
-    [SerializeField] private PromptBlock parameters;
+    [SerializeField] private PromptComponentBase images;
+    [SerializeField] private PromptComponentBase text;
+    [SerializeField] private PromptComponentBase parameters;
 
     private void Start()
     {

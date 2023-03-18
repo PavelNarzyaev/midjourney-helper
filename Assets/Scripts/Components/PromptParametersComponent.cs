@@ -1,4 +1,4 @@
-﻿public class ParametersPromptsBlock : PromptBlock
+﻿public class PromptParametersComponent : PromptComponentBase
 {
     public override string GetResultString()
     {

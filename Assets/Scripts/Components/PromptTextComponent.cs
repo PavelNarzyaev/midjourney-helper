@@ -1,4 +1,4 @@
-﻿public class TextPromptBlock : PromptBlock
+﻿public class PromptTextComponent : PromptComponentBase
 {
     public override string GetResultString()
     {

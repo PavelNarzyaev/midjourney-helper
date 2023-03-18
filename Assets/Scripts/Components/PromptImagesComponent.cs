@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class ImagePromptsBlock : PromptBlock
+public class PromptImagesComponent : PromptComponentBase
 {
-    [FormerlySerializedAs("unusedImages")] [SerializeField] private Images notUsedImages;
-    [SerializeField] private Images usedImages;
+    [SerializeField] private ImagesListComponent notUsedImagesComponent;
+    [SerializeField] private ImagesListComponent usedImagesComponent;
 
     public void Start()
     {
-        notUsedImages.Initialize(new List<ImageDto>
+        notUsedImagesComponent.Initialize(new List<ImageDto>
         {
             new()
             {
@@ -26,7 +25,7 @@ public class ImagePromptsBlock : PromptBlock
     public override string GetResultString()
     {
         var resultStringBuilder = new StringBuilder();
-        foreach (var image in notUsedImages.GetImages())
+        foreach (var image in notUsedImagesComponent.GetImages())
         {
             if (resultStringBuilder.Length != 0)
                 resultStringBuilder.Append(" ");

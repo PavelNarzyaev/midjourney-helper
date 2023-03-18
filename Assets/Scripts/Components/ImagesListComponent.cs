@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Images : MonoBehaviour
+public class ImagesListComponent : MonoBehaviour
 {
     private List<ImageDto> _images;
 
