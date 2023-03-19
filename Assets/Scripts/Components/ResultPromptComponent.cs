@@ -11,6 +11,7 @@ public class ResultPromptComponent : MonoBehaviour
     {
         Model.ResultPrompt.changeEvent += RefreshText;
         button.onClick.AddListener(Model.ResultPrompt.CopyToClipboard);
+        RefreshText();
     }
 
     private void RefreshText()

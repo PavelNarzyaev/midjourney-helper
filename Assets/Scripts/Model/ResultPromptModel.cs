@@ -17,6 +17,8 @@ public class ResultPromptModel
 
         foreach (var promptPartModel in promptPartModels)
             promptPartModel.changeEvent += Refresh;
+
+        Refresh();
     }
 
     private void Refresh()
