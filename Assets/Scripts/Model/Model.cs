@@ -1,5 +1,6 @@
 ﻿public static class Model
 {
+    public static LoadedImagesModel LoadedImagesModel = new();
     public static PromptPartImagesModel PromptPartImages = new();
     public static PromptPartTextModel PromptPartText = new();
     public static PromptPartParametersModel PromptPartParameters = new();
