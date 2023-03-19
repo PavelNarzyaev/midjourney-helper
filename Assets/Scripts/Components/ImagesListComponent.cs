@@ -7,8 +7,7 @@ public class ImagesListComponent : MonoBehaviour
     [SerializeField] private ImageComponent originalImage;
     [SerializeField] private RectTransform imagesContainer;
 
-    private List<ImageComponent> _inactiveImagesPool = new();
-    private List<ImageComponent> _activeImagesPool = new();
+    private Dictionary<string, ImageComponent> _imageComponentById = new();
 
     public event Action<string> onClickImageWithIdEvent;
 
@@ -19,31 +18,21 @@ public class ImagesListComponent : MonoBehaviour
 
     public void Refresh(List<ImageDto> imagesDtos)
     {
-        foreach (var image in _activeImagesPool)
-        {
-            image.gameObject.SetActive(false);
-            _inactiveImagesPool.Add(image);
-        }
-        _activeImagesPool.Clear();
+        foreach (var imageComponent in _imageComponentById)
+            imageComponent.Value.gameObject.SetActive(false);
 
         foreach (var imageDto in imagesDtos)
         {
-            ImageComponent image;
-            if (_inactiveImagesPool.Count > 0)
+            var imageComponent = _imageComponentById.GetValueOrDefault(imageDto.link);
+            if (imageComponent == null)
             {
-                var lastIndex = _inactiveImagesPool.Count - 1;
-                image = _inactiveImagesPool[lastIndex];
-                _inactiveImagesPool.RemoveAt(lastIndex);
-            }
-            else
-            {
-                image = Instantiate(originalImage, imagesContainer);
-                image.onClickComponentWithIdEvent += OnImageClick;
+                imageComponent = Instantiate(originalImage, imagesContainer);
+                imageComponent.SetLink(imageDto.link);
+                imageComponent.onClickComponentWithIdEvent += OnImageClick;
+                _imageComponentById.Add(imageDto.link, imageComponent);
             }
 
-            image.gameObject.SetActive(true);
-            image.SetLink(imageDto.link);
-            _activeImagesPool.Add(image);
+            imageComponent.gameObject.SetActive(true);
         }
     }
 
