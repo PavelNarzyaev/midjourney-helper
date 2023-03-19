@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -8,8 +9,16 @@ public class ImageComponent : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private Image image;
     [SerializeField] private RectTransform imageRectTransform;
+    [SerializeField] private Button button;
 
     private string _currentLink;
+
+    public event Action<string> onClickComponentWithIdEvent;
+
+    private void Start()
+    {
+        button.onClick.AddListener(() => onClickComponentWithIdEvent?.Invoke(_currentLink));
+    }
 
     public void SetLink(string link)
     {

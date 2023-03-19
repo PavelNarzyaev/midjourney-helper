@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class ImagesListComponent : MonoBehaviour
 
     private List<ImageComponent> _inactiveImagesPool = new();
     private List<ImageComponent> _activeImagesPool = new();
+
+    public event Action<string> onClickImageWithIdEvent;
 
     private void Start()
     {
@@ -30,10 +33,19 @@ public class ImagesListComponent : MonoBehaviour
             if (_inactiveImagesPool.Count > 0)
                 image = _inactiveImagesPool.TakeLast(1).ToList()[0];
             else
+            {
                 image = Instantiate(originalImage, imagesContainer);
+                _activeImagesPool.Add(image);
+            }
+
             image.gameObject.SetActive(true);
             image.SetLink(imageDto.link);
-            _activeImagesPool.Add(image);
+            image.onClickComponentWithIdEvent += OnImageClick;
         }
+    }
+
+    private void OnImageClick(string id)
+    {
+        onClickImageWithIdEvent?.Invoke(id);
     }
 }

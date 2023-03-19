@@ -8,5 +8,11 @@ public class PromptImagesComponent : MonoBehaviour
     public void Start()
     {
         notUsedImagesComponent.Refresh(Model.PromptPartImages.notUsedImages.list);
+        notUsedImagesComponent.onClickImageWithIdEvent += OnNotUsedImageClick;
+    }
+
+    private void OnNotUsedImageClick(string id)
+    {
+        Debug.Log($"Click not used: «{id}»");
     }
 }
