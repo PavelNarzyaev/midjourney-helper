@@ -32,10 +32,7 @@ public class ImageComponent : MonoBehaviour
         if (loadedTexture == null)
             StartCoroutine(DownloadImage());
         else
-        {
-            loadedTexture = CopyTexture(loadedTexture);
             ApplyTexture(loadedTexture);
-        }
     }
 
     private IEnumerator DownloadImage()
@@ -48,17 +45,9 @@ public class ImageComponent : MonoBehaviour
         else
         {
             var texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-            Model.LoadedImagesModel.textureByLink.Add(_currentLink, CopyTexture(texture));
+            Model.LoadedImagesModel.textureByLink.Add(_currentLink, texture);
             ApplyTexture(texture);
         }
-    }
-
-    private Texture2D CopyTexture(Texture2D originalTexture)
-    {
-        Texture2D copyTexture = new Texture2D(originalTexture.width, originalTexture.height);
-        copyTexture.SetPixels(originalTexture.GetPixels());
-        copyTexture.Apply();
-        return copyTexture;
     }
 
     private void ApplyTexture(Texture2D texture)
