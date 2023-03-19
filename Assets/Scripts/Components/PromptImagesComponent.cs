@@ -7,12 +7,26 @@ public class PromptImagesComponent : MonoBehaviour
 
     public void Start()
     {
-        notUsedImagesComponent.Refresh(Model.PromptPartImages.notUsedImages.list);
         notUsedImagesComponent.onClickImageWithIdEvent += OnNotUsedImageClick;
+        usedImagesComponent.onClickImageWithIdEvent += OnUsedImageClick;
+        Model.PromptPartImages.changeEvent += Refresh;
+
+        Refresh();
     }
 
     private void OnNotUsedImageClick(string id)
     {
-        Debug.Log($"Click not used: «{id}»");
+        Model.PromptPartImages.MoveToUsed(id);
+    }
+
+    private void OnUsedImageClick(string id)
+    {
+        Model.PromptPartImages.MoveToUnused(id);
+    }
+
+    private void Refresh()
+    {
+        notUsedImagesComponent.Refresh(Model.PromptPartImages.notUsedImagesList);
+        usedImagesComponent.Refresh(Model.PromptPartImages.usedImagesList);
     }
 }

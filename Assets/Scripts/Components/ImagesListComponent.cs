@@ -31,16 +31,20 @@ public class ImagesListComponent : MonoBehaviour
         {
             ImageComponent image;
             if (_inactiveImagesPool.Count > 0)
-                image = _inactiveImagesPool.TakeLast(1).ToList()[0];
+            {
+                var lastIndex = _inactiveImagesPool.Count - 1;
+                image = _inactiveImagesPool[lastIndex];
+                _inactiveImagesPool.RemoveAt(lastIndex);
+            }
             else
             {
                 image = Instantiate(originalImage, imagesContainer);
-                _activeImagesPool.Add(image);
+                image.onClickComponentWithIdEvent += OnImageClick;
             }
 
             image.gameObject.SetActive(true);
             image.SetLink(imageDto.link);
-            image.onClickComponentWithIdEvent += OnImageClick;
+            _activeImagesPool.Add(image);
         }
     }
 
