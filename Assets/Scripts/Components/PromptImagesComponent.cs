@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PromptImagesComponent : MonoBehaviour
 {
+    [SerializeField] private TMP_InputField addInputField;
     [SerializeField] private Button addButton;
     [SerializeField] private ImageComponent originalImage;
     [SerializeField] private RectTransform imagesContainer;
@@ -20,7 +22,8 @@ public class PromptImagesComponent : MonoBehaviour
 
     private void OnAddButtonClick()
     {
-        Debug.Log("Click");
+        Model.PromptPartImages.AddLink(addInputField.text.Trim());
+        addInputField.text = string.Empty;
     }
 
     private void Refresh()
@@ -37,6 +40,7 @@ public class PromptImagesComponent : MonoBehaviour
                 imageComponent.gameObject.SetActive(true);
                 imageComponent.SetLink(image.link);
                 imageComponent.onClickComponentWithIdEvent += OnImageClick;
+                imageComponent.onRemoveWithIdEvent += OnRemoveImageButtonClick;
                 _imageComponentById.Add(image.link, imageComponent);
             }
             else
@@ -50,5 +54,10 @@ public class PromptImagesComponent : MonoBehaviour
     private void OnImageClick(string id)
     {
         Model.PromptPartImages.ChangeImageSelection(id);
+    }
+
+    private void OnRemoveImageButtonClick(string id)
+    {
+        Model.PromptPartImages.RemoveByLink(id);
     }
 }

@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class PromptPartImagesModel : PromptPartModelBase
 {
-    public List<ImageModel> imagesList;
+    public List<ImageModel> imagesList = new();
 
     public override event Action changeEvent;
 
-    public PromptPartImagesModel()
+    public void AddLink(string link)
     {
-        imagesList = new List<ImageModel>
-        {
-            new() { link = "https://cdn.discordapp.com/attachments/1084173661474402305/1086032594530992149/1.jpg" },
-            new() { link = "https://cdn.discordapp.com/attachments/1084173661474402305/1086032595105624186/2.jpg" }
-        };
+        imagesList.Add(new ImageModel { link = link });
+        changeEvent?.Invoke();
+    }
+
+    public void RemoveByLink(string link)
+    {
+        imagesList.RemoveAt(GetIndexById(link));
+        changeEvent?.Invoke();
     }
 
     public override string GetPromptPart()
