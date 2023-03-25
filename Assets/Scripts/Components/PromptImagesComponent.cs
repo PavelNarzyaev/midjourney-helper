@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PromptImagesComponent : MonoBehaviour
 {
+    [SerializeField] private Button addButton;
     [SerializeField] private ImageComponent originalImage;
     [SerializeField] private RectTransform imagesContainer;
 
@@ -10,9 +12,15 @@ public class PromptImagesComponent : MonoBehaviour
 
     public void Start()
     {
+        addButton.onClick.AddListener(OnAddButtonClick);
         Model.PromptPartImages.changeEvent += Refresh;
         originalImage.gameObject.SetActive(false);
         Refresh();
+    }
+
+    private void OnAddButtonClick()
+    {
+        Debug.Log("Click");
     }
 
     private void Refresh()
