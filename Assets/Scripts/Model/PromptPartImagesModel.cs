@@ -1,33 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 public class PromptPartImagesModel : PromptPartModelBase
 {
-    public List<ImageModel> imagesList = new();
-
     public override event Action changeEvent;
 
     public void AddLink(string link)
     {
-        imagesList.Add(new ImageModel { link = link });
+        Model.PlayerPrefs.currentState.imagesList.Add(new ImageModel { link = link, selected = true });
+        Model.PlayerPrefs.Save();
         changeEvent?.Invoke();
     }
 
     public void RemoveByLink(string link)
     {
-        imagesList.RemoveAt(GetIndexById(link));
+        Model.PlayerPrefs.currentState.imagesList.RemoveAt(GetIndexById(link));
+        Model.PlayerPrefs.Save();
         changeEvent?.Invoke();
     }
 
     public override string GetPromptPart()
     {
-        if (imagesList == null || imagesList.Count == 0)
+        if (Model.PlayerPrefs.currentState.imagesList == null || Model.PlayerPrefs.currentState.imagesList.Count == 0)
             return string.Empty;
 
-        var selectedImages = imagesList.Where(image => image.selected);
+        var selectedImages = Model.PlayerPrefs.currentState.imagesList.Where(image => image.selected);
         var stringBuilder = new StringBuilder();
         foreach (var image in selectedImages)
         {
@@ -43,16 +41,17 @@ public class PromptPartImagesModel : PromptPartModelBase
     {
         var image = GetById(id);
         image.selected = !image.selected;
+        Model.PlayerPrefs.Save();
         changeEvent?.Invoke();
     }
 
     private ImageModel GetById(string id)
     {
-        return imagesList[GetIndexById(id)];
+        return Model.PlayerPrefs.currentState.imagesList[GetIndexById(id)];
     }
 
     private int GetIndexById(string id)
     {
-        return imagesList.FindIndex(imageDto => imageDto.link == id);
+        return Model.PlayerPrefs.currentState.imagesList.FindIndex(imageDto => imageDto.link == id);
     }
 }

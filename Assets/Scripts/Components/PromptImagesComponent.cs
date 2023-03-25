@@ -31,7 +31,7 @@ public class PromptImagesComponent : MonoBehaviour
         foreach (var imageComponent in _imageComponentById)
             imageComponent.Value.gameObject.SetActive(false);
 
-        foreach (var image in Model.PromptPartImages.imagesList)
+        foreach (var image in Model.PlayerPrefs.currentState.imagesList)
         {
             var imageComponent = _imageComponentById.GetValueOrDefault(image.link);
             if (imageComponent == null)
