@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class PromptPartImagesModel : PromptPartModelBase
 {
@@ -8,6 +9,12 @@ public class PromptPartImagesModel : PromptPartModelBase
 
     public void AddLink(string link)
     {
+        if (Model.PromptPartImages.HasImage(link))
+        {
+            Debug.LogError("This image has already added");
+            return;
+        }
+
         Model.PlayerPrefs.currentState.imagesList.Add(new ImageModel { link = link, selected = true });
         Model.PlayerPrefs.Save();
         changeEvent?.Invoke();
@@ -43,6 +50,11 @@ public class PromptPartImagesModel : PromptPartModelBase
         image.selected = !image.selected;
         Model.PlayerPrefs.Save();
         changeEvent?.Invoke();
+    }
+
+    public bool HasImage(string id)
+    {
+        return Model.PlayerPrefs.currentState.imagesList.FirstOrDefault(image => image.link == id) != null;
     }
 
     private ImageModel GetById(string id)
