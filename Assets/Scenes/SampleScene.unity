@@ -604,7 +604,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 1
   m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1778,23 +1778,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545894912159, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3314,23 +3314,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545888888564, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436397545894912159, guid: 18a434a488c8b734cb8f0f3433d6a879, type: 3}
       propertyPath: m_AnchorMax.y
