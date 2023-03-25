@@ -11,6 +11,7 @@ public class ImageComponent : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private RectTransform imageRectTransform;
     [SerializeField] private Button button;
+    [SerializeField] private GameObject selectedMark;
 
     private string _currentLink;
 
@@ -19,6 +20,11 @@ public class ImageComponent : MonoBehaviour
     private void Start()
     {
         button.onClick.AddListener(() => onClickComponentWithIdEvent?.Invoke(_currentLink));
+    }
+
+    public void SetSelected(bool value)
+    {
+        selectedMark.SetActive(value);
     }
 
     public void SetLink(string link)

@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 public class PromptPartImagesModel : PromptPartModelBase
 {
-    public List<ImageDto> notUsedImagesList => _notUsedImages.list;
-    public List<ImageDto> usedImagesList => _usedImages.list;
-
-    private ImagesListModel _notUsedImages = new();
-    private ImagesListModel _usedImages = new();
+    public List<ImageModel> imagesList;
 
     public override event Action changeEvent;
 
     public PromptPartImagesModel()
     {
-        _notUsedImages.list = new List<ImageDto>
+        imagesList = new List<ImageModel>
         {
             new() { link = "https://cdn.discordapp.com/attachments/1084173661474402305/1086032594530992149/1.jpg" },
             new() { link = "https://cdn.discordapp.com/attachments/1084173661474402305/1086032595105624186/2.jpg" }
@@ -23,35 +20,35 @@ public class PromptPartImagesModel : PromptPartModelBase
 
     public override string GetPromptPart()
     {
-        if (_usedImages.list.Count == 0)
+        if (imagesList == null || imagesList.Count == 0)
             return string.Empty;
 
+        var selectedImages = imagesList.Where(image => image.selected);
         var stringBuilder = new StringBuilder();
-        foreach (var imageDto in _usedImages.list)
+        foreach (var image in selectedImages)
         {
             if (stringBuilder.Length != 0)
                 stringBuilder.Append(" ");
-            stringBuilder.Append(imageDto.link);
+            stringBuilder.Append(image.link);
         }
 
         return stringBuilder.ToString();
     }
 
-    public void MoveToUsed(string id)
+    public void ChangeImageSelection(string id)
     {
-        var dto = _notUsedImages.GetById(id);
-        _notUsedImages.Remove(dto);
-        _usedImages.Add(dto);
-
+        var image = GetById(id);
+        image.selected = !image.selected;
         changeEvent?.Invoke();
     }
 
-    public void MoveToUnused(string id)
+    private ImageModel GetById(string id)
     {
-        var dto = _usedImages.GetById(id);
-        _usedImages.Remove(dto);
-        _notUsedImages.Add(dto);
+        return imagesList[GetIndexById(id)];
+    }
 
-        changeEvent?.Invoke();
+    private int GetIndexById(string id)
+    {
+        return imagesList.FindIndex(imageDto => imageDto.link == id);
     }
 }
