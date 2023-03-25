@@ -7,6 +7,7 @@ public class PromptTextComponent : MonoBehaviour
 
     private void Start()
     {
+        inputField.text = Model.PlayerPrefs.currentState.text;
         inputField.onValueChanged.AddListener(value => Model.PromptPartText.SetText(value));
     }
 }

@@ -2,17 +2,17 @@
 
 public class PromptPartTextModel : PromptPartModelBase
 {
-    private string _text;
     public override event Action changeEvent;
 
     public void SetText(string value)
     {
-        _text = value;
+        Model.PlayerPrefs.currentState.text = value;
+        Model.PlayerPrefs.Save();
         changeEvent?.Invoke();
     }
 
     public override string GetPromptPart()
     {
-        return _text;
+        return Model.PlayerPrefs.currentState.text;
     }
 }

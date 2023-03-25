@@ -29,9 +29,6 @@ public class PromptPartImagesModel : PromptPartModelBase
 
     public override string GetPromptPart()
     {
-        if (Model.PlayerPrefs.currentState.imagesList == null || Model.PlayerPrefs.currentState.imagesList.Count == 0)
-            return string.Empty;
-
         var selectedImages = Model.PlayerPrefs.currentState.imagesList.Where(image => image.selected);
         var stringBuilder = new StringBuilder();
         foreach (var image in selectedImages)
@@ -52,7 +49,7 @@ public class PromptPartImagesModel : PromptPartModelBase
         changeEvent?.Invoke();
     }
 
-    public bool HasImage(string id)
+    private bool HasImage(string id)
     {
         return Model.PlayerPrefs.currentState.imagesList.FirstOrDefault(image => image.link == id) != null;
     }
@@ -64,6 +61,6 @@ public class PromptPartImagesModel : PromptPartModelBase
 
     private int GetIndexById(string id)
     {
-        return Model.PlayerPrefs.currentState.imagesList.FindIndex(imageDto => imageDto.link == id);
+        return Model.PlayerPrefs.currentState.imagesList.FindIndex(image => image.link == id);
     }
 }
