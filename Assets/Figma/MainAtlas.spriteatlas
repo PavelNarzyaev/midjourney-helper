@@ -38,12 +38,20 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 3d4e35f126166e4489cf25fed8139dba, type: 3}
+  - {fileID: 21300000, guid: 4e1aff96225edd5499d8ddedd9f3e496, type: 3}
   - {fileID: 21300000, guid: 25d226ecbf139474198a13264de8e13b, type: 3}
   - {fileID: 21300000, guid: 8300a71d71e6ee946859015dcc6d1fc6, type: 3}
+  - {fileID: 21300000, guid: 7bfaea3ddfc270f419cc394d1ae06a76, type: 3}
+  - {fileID: 21300000, guid: c4d9715e55ed93f4ebd9c5e89777671a, type: 3}
   - {fileID: 21300000, guid: 49fd8b5e2ffdbda42aa2dc8596c5ca3c, type: 3}
   m_PackedSpriteNamesToIndex:
+  - TopLeftPartOfFooterBackground
+  - TopMiddlePartOfFooterBackground
   - BlockBackgroundMinimalSize
   - MainBackground
+  - TopRightPartOfFooterBackground
+  - BottomPartOfFooterBackground
   - InputFieldMinimalSize
   m_RenderDataMap: {}
   m_Tag: MainAtlas
