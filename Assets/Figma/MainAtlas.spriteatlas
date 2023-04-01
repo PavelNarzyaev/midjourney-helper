@@ -56,7 +56,7 @@ SpriteAtlas:
   - MainBackground
   - TopRightPartOfFooterBackground
   - BottomPartOfFooterBackground
-  - InputFieldMinimalSize
+  - BlockDeepingMinimalSize
   m_RenderDataMap: {}
   m_Tag: MainAtlas
   m_IsVariant: 0
