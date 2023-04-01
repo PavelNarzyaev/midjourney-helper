@@ -40,9 +40,11 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 25d226ecbf139474198a13264de8e13b, type: 3}
   - {fileID: 21300000, guid: 8300a71d71e6ee946859015dcc6d1fc6, type: 3}
+  - {fileID: 21300000, guid: 49fd8b5e2ffdbda42aa2dc8596c5ca3c, type: 3}
   m_PackedSpriteNamesToIndex:
   - BlockBackgroundMinimalSize
   - MainBackground
+  - InputFieldMinimalSize
   m_RenderDataMap: {}
   m_Tag: MainAtlas
   m_IsVariant: 0
