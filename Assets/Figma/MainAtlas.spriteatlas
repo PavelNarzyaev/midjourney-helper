@@ -51,7 +51,7 @@ SpriteAtlas:
   - TopLeftPartOfFooterBackground
   - MainScrollShadow
   - TopMiddlePartOfFooterBackground
-  - BlockLighting
+  - BlockShadow
   - BlockBackgroundMinimalSize
   - MainBackground
   - TopRightPartOfFooterBackground
