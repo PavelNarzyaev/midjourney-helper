@@ -38,6 +38,7 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 3ad5dab02a77bfd449cb29ce27dc7bd7, type: 3}
   - {fileID: 21300000, guid: 3d4e35f126166e4489cf25fed8139dba, type: 3}
   - {fileID: 21300000, guid: 455b57d4ae41a6049bc91e81d7324d7f, type: 3}
   - {fileID: 21300000, guid: 4e1aff96225edd5499d8ddedd9f3e496, type: 3}
@@ -48,6 +49,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c4d9715e55ed93f4ebd9c5e89777671a, type: 3}
   - {fileID: 21300000, guid: 49fd8b5e2ffdbda42aa2dc8596c5ca3c, type: 3}
   m_PackedSpriteNamesToIndex:
+  - ButtonH80
   - TopLeftPartOfFooterBackground
   - MainScrollShadow
   - TopMiddlePartOfFooterBackground
